@@ -54,7 +54,7 @@ spec:
       metadata:
         generateName: react-app-pipeline-
       spec:
-        serviceAccountName: build-bot-react
+        serviceAccountName: build-bot
         params:
           - name: image-repo
             value: quay.io/sohaib_ashraf_ibm/squad-3-react-app
