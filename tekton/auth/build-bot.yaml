@@ -1,0 +1,11 @@
+apiVersion: v1
+imagePullSecrets:
+- name: build-bot-react-dockercfg-ncv2b
+kind: ServiceAccount
+metadata:
+  name: build-bot-react
+  namespace: squad-3-final-assignment
+secrets:
+- name: build-bot-react-dockercfg-ncv2b
+- name: build-bot-react-token-xzfjr
+- name: quay-io-credentials-react

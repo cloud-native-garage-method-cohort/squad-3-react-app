@@ -1,16 +1,16 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: express-app-pipeline-
+  generateName: react-app-pipeline-
 spec:
-  serviceAccountName: build-bot
+  serviceAccountName: build-bot-react
   pipelineRef:
-    name: express-app-pipeline
+    name: react-app-pipeline
   params:
     - name: image-repo
-      value: quay.io/sohaib_ashraf_ibm/express-app
+      value: quay.io/sohaib_ashraf_ibm/squad-3-react-app
     - name: app-name
-      value: express-app
+      value: react-app
   workspaces:
   - name: pipeline-shared-data
     volumeClaimTemplate:
