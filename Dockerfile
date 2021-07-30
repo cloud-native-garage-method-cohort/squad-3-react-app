@@ -1,15 +1,35 @@
-FROM node:13.12.0-alpine
+# FROM node:13.12.0-alpine
 
-# set working directory
+# # set working directory
+# WORKDIR /app
+
+# # install app dependencies
+# COPY package.json ./
+
+# RUN npm install
+
+# # add app
+# COPY . ./
+
+# Use node Docker image, version 16-alpine
+FROM quay.io/ibmgaragecloud/node:lts-stretch
+
+# From the documentation, "The WORKDIR instruction sets the working directory for any
+# RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile"
 WORKDIR /app
 
-# install app dependencies
-COPY package.json ./
+# COPY package.json and package-lock.json into root of WORKDIR
+COPY package*.json ./
 
+# Executes commands
 RUN npm install
 
-# add app
-COPY . ./
+# Copies files from source to destination, in this case the root of the build context
+# into the root of the WORKDIR
+COPY . .
+
+# Document that this container exposes something on port 3000
+EXPOSE 3000
 
 # start app
 CMD ["npm", "start"]
